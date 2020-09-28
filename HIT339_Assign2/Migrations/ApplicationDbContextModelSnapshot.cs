@@ -78,9 +78,6 @@ namespace HIT339_Assign2.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ScheduleId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -101,9 +98,29 @@ namespace HIT339_Assign2.Migrations
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+                    b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("HIT339_Assign2.Data.Enrolment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ScheduleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
                     b.HasIndex("ScheduleId");
 
-                    b.ToTable("AspNetUsers");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Enrolment");
                 });
 
             modelBuilder.Entity("HIT339_Assign2.Data.Schedule", b =>
@@ -268,11 +285,17 @@ namespace HIT339_Assign2.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("HIT339_Assign2.Areas.Identity.Data.ApplicationUser", b =>
+            modelBuilder.Entity("HIT339_Assign2.Data.Enrolment", b =>
                 {
-                    b.HasOne("HIT339_Assign2.Data.Schedule", null)
-                        .WithMany("Enrolled")
-                        .HasForeignKey("ScheduleId");
+                    b.HasOne("HIT339_Assign2.Data.Schedule", "Schedule")
+                        .WithMany("Enrolments")
+                        .HasForeignKey("ScheduleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HIT339_Assign2.Areas.Identity.Data.ApplicationUser", "User")
+                        .WithMany("Enrolments")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

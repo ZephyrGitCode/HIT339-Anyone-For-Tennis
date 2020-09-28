@@ -16,6 +16,8 @@ namespace HIT339_Assign2.Data
 
         public DbSet<Schedule> Schedule { get; set; }
 
+        public DbSet<Enrolment> Enrolment { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
