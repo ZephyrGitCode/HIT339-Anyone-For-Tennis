@@ -22,7 +22,7 @@ namespace HIT339_Assign2.Data
         [PersonalData]
         public string Location { get; set; }
 
-        public virtual ICollection<ApplicationUser> Enrolled { get; set; }
+        public virtual ICollection<Enrolment> Enrolments { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime Eventdatetime { get; set; }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using HIT339_Assign2.Data;
 using Microsoft.AspNetCore.Identity;
 
 namespace HIT339_Assign2.Areas.Identity.Data
@@ -25,6 +26,7 @@ namespace HIT339_Assign2.Areas.Identity.Data
         [PersonalData]
         public string Biography { get; set; }
 
-        
+        public virtual ICollection<Enrolment> Enrolments { get; set; }
+
     }
 }
