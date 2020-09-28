@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TaG5ZPN9HRZHq1ZgjGk7DMb2XZpaMqWIxw3CBiR7mrfi3smc16q/yXnH+eTEqLy49dF9Z5BnOdSFQYFvGVbE6w==",
+  "dgSpecHash": "5ym/9s4bB3U5GDK/RqXhDw0cPBybVx636iF/xkzmDL2OEvbgYgy2hd9iUty2AlZjBPm2e4fgDGZ3P2I0eBy/Lw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assign2_Project\\HIT339_Assign2\\HIT339_Assign2.csproj",
+  "projectFilePath": "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assignment2_App\\HIT339_Assign2\\HIT339_Assign2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zephy\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.8\\microsoft.aspnetcore.cryptography.internal.3.1.8.nupkg.sha512",
     "C:\\Users\\zephy\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.8\\microsoft.aspnetcore.cryptography.keyderivation.3.1.8.nupkg.sha512",
