@@ -20,6 +20,11 @@ namespace HIT339_Assign2.Areas.Identity.Data
         public int Age { get; set; }
 
         [PersonalData]
-        public string Image { get; set; }
+        public string Gender { get; set; }
+
+        [PersonalData]
+        public string Biography { get; set; }
+
+        
     }
 }
