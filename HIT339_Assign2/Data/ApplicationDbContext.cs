@@ -14,6 +14,8 @@ namespace HIT339_Assign2.Data
         {
         }
 
+        public DbSet<Schedule> Schedule { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -21,7 +23,7 @@ namespace HIT339_Assign2.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
             //builder.Entity<Item>().Property(b => b.Postdate).HasDefaultValueSql("getdate()");
-            //builder.Entity<Sale>().Property(m => m.SaleDate).HasDefaultValueSql("getdate()");
+            builder.Entity<Schedule>().Property(m => m.Eventdatetime).HasDefaultValueSql("getdate()");
         }
     }
 }

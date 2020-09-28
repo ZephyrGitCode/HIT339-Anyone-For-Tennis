@@ -8846,11 +8846,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assign2_Project\\HIT339_Assign2\\HIT339_Assign2.csproj",
+      "projectUniqueName": "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assignment2_App\\HIT339_Assign2\\HIT339_Assign2.csproj",
       "projectName": "HIT339_Assign2",
-      "projectPath": "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assign2_Project\\HIT339_Assign2\\HIT339_Assign2.csproj",
+      "projectPath": "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assignment2_App\\HIT339_Assign2\\HIT339_Assign2.csproj",
       "packagesPath": "C:\\Users\\zephy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assign2_Project\\HIT339_Assign2\\obj\\",
+      "outputPath": "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assignment2_App\\HIT339_Assign2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\zephy\\AppData\\Roaming\\NuGet\\NuGet.Config",
