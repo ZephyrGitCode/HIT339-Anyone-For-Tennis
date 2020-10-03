@@ -27,6 +27,5 @@ namespace HIT339_Assign2.Areas.Identity.Data
         public string Biography { get; set; }
 
         public virtual ICollection<Enrolment> Enrolments { get; set; }
-
     }
 }

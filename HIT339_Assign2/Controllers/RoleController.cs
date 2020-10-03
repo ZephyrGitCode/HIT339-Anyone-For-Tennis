@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HIT339_Assign2.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,14 +13,18 @@ namespace HIT339_Assign2.Controllers
     public class RoleController : Controller
     {
         RoleManager<IdentityRole> roleManager;
+        UserManager<ApplicationUser> userManager;
+
 
         /// 
-        /// Injecting Role Manager
+        /// Injecting Role Ma
         /// 
         /// 
-        public RoleController(RoleManager<IdentityRole> roleManager)
+        public RoleController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
         {
             this.roleManager = roleManager;
+            this.userManager = userManager;
+
         }
 
         public IActionResult Index()
@@ -38,6 +43,15 @@ namespace HIT339_Assign2.Controllers
         {
             await roleManager.CreateAsync(role);
             return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public IActionResult ListUsers()
+        {
+            ViewBag.UserId = userManager.GetUserId(HttpContext.User);
+            var users = userManager.GetUsersInRoleAsync("Coach").Result;
+            return View(users);
         }
     }
 } 

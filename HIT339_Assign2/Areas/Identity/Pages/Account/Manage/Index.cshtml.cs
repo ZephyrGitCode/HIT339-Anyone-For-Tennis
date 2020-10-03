@@ -36,6 +36,11 @@ namespace HIT339_Assign2.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Bio")]
+            public string Biography { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
@@ -47,7 +52,8 @@ namespace HIT339_Assign2.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                Biography = user.Biography
             };
         }
 
@@ -87,6 +93,11 @@ namespace HIT339_Assign2.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+            if (Input.Biography != user.Biography)
+            {
+                user.Biography = Input.Biography;
+            }
+            await _userManager.UpdateAsync(user);
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
