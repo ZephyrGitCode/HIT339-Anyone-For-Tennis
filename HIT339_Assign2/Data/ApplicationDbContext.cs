@@ -29,7 +29,7 @@ namespace HIT339_Assign2.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
             //builder.Entity<Item>().Property(b => b.Postdate).HasDefaultValueSql("getdate()");
-            builder.Entity<Schedule>().Property(m => m.Eventdatetime).HasDefaultValueSql("getdate()");
+            //builder.Entity<Schedule>().Property(m => m.Eventdatetime).HasDefaultValueSql("getdate()");
         }
     }
 }

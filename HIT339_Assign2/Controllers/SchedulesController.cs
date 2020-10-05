@@ -6,22 +6,35 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HIT339_Assign2.Data;
+using Microsoft.AspNetCore.Authorization;
+using HIT339_Assign2.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
+using HIT339_Assign2.Models;
 
 namespace HIT339_Assign2.Controllers
 {
     public class SchedulesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public SchedulesController(ApplicationDbContext context)
+        public SchedulesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Schedules
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Schedule.ToListAsync());
+
+            var SchedulesVM = new ScheduleViewModel
+            {
+                Schedules = _context.Schedule.ToList(),
+                Coachs = (List<ApplicationUser>)_userManager.GetUsersInRoleAsync("Coach").Result
+            };
+
+            return View(SchedulesVM);
         }
 
         // GET: Schedules/Details/5
@@ -42,9 +55,12 @@ namespace HIT339_Assign2.Controllers
             return View(schedule);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Schedules/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
+            ViewData["coachs"] = _userManager.GetUsersInRoleAsync("Coach").Result;
             return View();
         }
 
@@ -64,7 +80,9 @@ namespace HIT339_Assign2.Controllers
             return View(schedule);
         }
 
+
         // GET: Schedules/Edit/5
+        [Authorize(Roles = "Admin,Coach")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,9 +98,11 @@ namespace HIT339_Assign2.Controllers
             return View(schedule);
         }
 
+
         // POST: Schedules/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin,Coach")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Eventname,Coach,Location,Eventdatetime")] Schedule schedule)
@@ -116,6 +136,7 @@ namespace HIT339_Assign2.Controllers
         }
 
         // GET: Schedules/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,6 +155,7 @@ namespace HIT339_Assign2.Controllers
         }
 
         // POST: Schedules/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

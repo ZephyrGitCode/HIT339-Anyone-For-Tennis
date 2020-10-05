@@ -24,7 +24,6 @@ namespace HIT339_Assign2.Controllers
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
-
         }
 
         public IActionResult Index()
@@ -44,7 +43,6 @@ namespace HIT339_Assign2.Controllers
             await roleManager.CreateAsync(role);
             return RedirectToAction("Index");
         }
-
 
         [HttpGet]
         public IActionResult ListUsers()

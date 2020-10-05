@@ -74,7 +74,7 @@ namespace HIT339_Assign2.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-                        ViewData["roles"] = _roleManager.Roles.ToList();
+            ViewData["roles"] = _roleManager.Roles.ToList();
 
             ReturnUrl = returnUrl;
 

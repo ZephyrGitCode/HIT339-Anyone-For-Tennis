@@ -2,11 +2,12 @@
 
 @{
     ViewData["Title"] = "Create";
+    var coachs = (List<HIT339_Assign2.Areas.Identity.Data.ApplicationUser>)ViewData["coachs"];
 }
 
 <h1>Create</h1>
 
-<h4>Schedule</h4>
+<h4>Schedule @ViewBag.coach</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,13 +20,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="Coach" class="control-label"></label>
-                <input asp-for="Coach" class="form-control" />
+                <select asp-for="Coach" class="form-control"
+                        asp-items='new SelectList(coachs,"Id","Fname","Lname")'></select>
                 <span asp-validation-for="Coach" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Location" class="control-label"></label>
                 <input asp-for="Location" class="form-control" />
                 <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Eventdatetime" class="control-label"></label>
+                <input asp-for="Eventdatetime" class="form-control" />
+                <span asp-validation-for="Eventdatetime" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

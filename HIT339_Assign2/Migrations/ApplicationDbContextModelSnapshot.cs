@@ -134,9 +134,7 @@ namespace HIT339_Assign2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Eventdatetime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Eventname")
                         .HasColumnType("nvarchar(50)")

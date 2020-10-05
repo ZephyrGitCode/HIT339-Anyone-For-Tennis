@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HIT339_Assign2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200928115815_Initial")]
+    [Migration("20201005080744_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -136,9 +136,7 @@ namespace HIT339_Assign2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Eventdatetime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Eventname")
                         .HasColumnType("nvarchar(50)")

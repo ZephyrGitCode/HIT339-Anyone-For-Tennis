@@ -24,7 +24,6 @@ namespace HIT339_Assign2.Data
 
         public virtual ICollection<Enrolment> Enrolments { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime Eventdatetime { get; set; }
     }
 }

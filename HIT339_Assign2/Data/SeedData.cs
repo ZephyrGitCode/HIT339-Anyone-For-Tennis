@@ -25,21 +25,21 @@ namespace HIT339_Assign2.Data
                     new Schedule
                     {
                         Eventname = "Juniors",
-                        Coach = "James",
+                        //Coach = "James",
                         Location = "Cas",
                         Eventdatetime = DateTime.Parse("2020-9-28")
                     },
                     new Schedule
                     {
                         Eventname = "Moderate",
-                        Coach = "Nick",
+                        //Coach = "Nick",
                         Location = "Palmo",
                         Eventdatetime = DateTime.Parse("2020-9-28")
                     },
                     new Schedule
                     {
                         Eventname = "Seniors",
-                        Coach = "Bob",
+                        //Coach = "Bob",
                         Location = "City",
                         Eventdatetime = DateTime.Parse("2020-9-28")
                     }

@@ -60,7 +60,7 @@ namespace HIT339_Assign2.Migrations
                     Eventname = table.Column<string>(maxLength: 50, nullable: true),
                     Coach = table.Column<string>(nullable: true),
                     Location = table.Column<string>(nullable: true),
-                    Eventdatetime = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()")
+                    Eventdatetime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

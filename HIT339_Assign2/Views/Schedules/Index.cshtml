@@ -1,7 +1,8 @@
-﻿@model IEnumerable<HIT339_Assign2.Data.Schedule>
+﻿@model HIT339_Assign2.Models.ScheduleViewModel
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Index</h1>
@@ -9,45 +10,56 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Eventname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Coach)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Eventdatetime)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Eventname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Coach)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Eventdatetime)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Event
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Schedules[0].Coach)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Schedules[0].Location)
+                </th>
+                <th>
+                    Date and Time of event
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Schedules)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Eventname)
+                    </td>
+
+                    @foreach (var coach in Model.Coachs)
+                    {
+                        @if (coach.Id == item.Coach)
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => coach.Fname) @Html.DisplayFor(modelItem => coach.Lname)
+                            </td>
+                        }
+                    }
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Eventdatetime)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
