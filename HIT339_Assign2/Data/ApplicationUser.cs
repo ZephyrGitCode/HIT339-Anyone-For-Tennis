@@ -11,21 +11,27 @@ namespace HIT339_Assign2.Areas.Identity.Data
     // Add profile data for ApplicationUser users by adding properties to the Assign1_Salesboard_ZephyrUser class
     public class ApplicationUser : IdentityUser
     {
+        [Display(Name = "First Name")]
         [StringLength(25), PersonalData]
         public string Fname { get; set; }
 
+        [Display(Name = "Last Name")]
         [StringLength(50), PersonalData]
         public string Lname { get; set; }
 
-        [Range(16,120), PersonalData]
+        [Display(Name = "Age")]
+        [Range(15,120), PersonalData]
         public int Age { get; set; }
 
+        [Display(Name = "Gender")]
         [PersonalData]
         public string Gender { get; set; }
 
+        [Display(Name = "Biography")]
         [PersonalData]
         public string Biography { get; set; }
 
+        [Display(Name = "Enrolments")]
         public virtual ICollection<Enrolment> Enrolments { get; set; }
     }
 }
