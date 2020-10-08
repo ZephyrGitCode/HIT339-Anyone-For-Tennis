@@ -4,7 +4,7 @@
     ViewBag.Title = "Coach Profiles";
 }
 
-<h1>Coachs</h1>
+<h1>All Users</h1>
 
 @if (Model.Any())
 {
@@ -14,14 +14,15 @@
     {
         <div class="card mb-3">
             <div class="card-header">
-                Contact: @user.UserName
+                User Id : @user.Id
             </div>
             <div class="card-body">
-                <h5 class="card-title">Coach: @user.Fname @user.Lname</h5>
+                <h5 class="card-title">Member: @user.UserName</h5>
                 <h5 class="card-title">Bio: @user.Biography </h5>
 
             </div>
             <div class="card-footer">
+
                 @if (@ViewBag.UserId == user.Id)//this here hides the edit button for the the other users however its still secure if they try use the url to edit other peoples shit they will still be directed to their own profile :)
                 {
                     <a href="~/Identity/Account/Manage" class="btn btn-danger">Edit</a>
