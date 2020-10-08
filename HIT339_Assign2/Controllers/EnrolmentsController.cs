@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HIT339_Assign2.Data;
+using Microsoft.AspNetCore.Identity;
+using HIT339_Assign2.Areas.Identity.Data;
 
 namespace HIT339_Assign2.Controllers
 {
     public class EnrolmentsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        UserManager<ApplicationUser> _userManager;
 
-        public EnrolmentsController(ApplicationDbContext context)
+        public EnrolmentsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Enrolments
@@ -49,7 +53,9 @@ namespace HIT339_Assign2.Controllers
         public IActionResult Create()
         {
             ViewData["ScheduleId"] = new SelectList(_context.Schedule, "Id", "Id");
+            ViewData["ScheduleName"] = new SelectList(_context.Schedule, "Id", "Eventname");
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["UserName"] = new SelectList(_userManager.GetUsersInRoleAsync("Member").Result, "Id", "UserName");
             return View();
         }
 
@@ -66,8 +72,10 @@ namespace HIT339_Assign2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ScheduleId"] = new SelectList(_context.Schedule, "Id", "Id", enrolment.ScheduleId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", enrolment.UserId);
+            ViewData["ScheduleId"] = new SelectList(_context.Schedule, "Id", "Id");
+            ViewData["ScheduleName"] = new SelectList(_context.Schedule, "Id", "Eventname");
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["UserName"] = new SelectList(_userManager.GetUsersInRoleAsync("Member").Result, "Id", "UserName");
             return View(enrolment);
         }
 

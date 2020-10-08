@@ -13,11 +13,11 @@ namespace HIT339_Assign2.Areas.Identity.Pages.Account.Manage
     public partial class IndexModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly SignInManager<ApplicationUser>_signInManager;
 
         public IndexModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser>signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -33,27 +33,6 @@ namespace HIT339_Assign2.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-
-            [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "First name")]
-            public string Fname { get; set; }
-
-            [Required]
-            [Display(Name = "Last Name")]
-            [DataType(DataType.Text)]
-            public string Lname { get; set; }
-
-            [Required]
-            [Display(Name = "Age")]
-            [DataType(DataType.Text)]
-            public int Age { get; set; }
-
-            [Required]
-            [Display(Name = "Gender")]
-            [DataType(DataType.Text)]
-            public string Gender { get; set; }
-
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -74,11 +53,7 @@ namespace HIT339_Assign2.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
-                Biography = user.Biography,
-                Fname = user.Fname,
-                Lname = user.Lname,
-                Age = user.Age,
-                Gender = user.Gender
+                Biography = user.Biography
             };
         }
 
@@ -121,22 +96,6 @@ namespace HIT339_Assign2.Areas.Identity.Pages.Account.Manage
             if (Input.Biography != user.Biography)
             {
                 user.Biography = Input.Biography;
-            }
-            if (Input.Fname != user.Fname)
-            {
-                user.Fname = Input.Fname;
-            }
-            if (Input.Lname != user.Lname)
-            {
-                user.Lname = Input.Lname;
-            }
-            if (Input.Age != user.Age)
-            {
-                user.Age = Input.Age;
-            }
-            if (Input.Gender != user.Gender)
-            {
-                user.Gender = Input.Gender;
             }
             await _userManager.UpdateAsync(user);
 
