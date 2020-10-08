@@ -1,0 +1,43 @@
+﻿@model IEnumerable<HIT339_Assign2.Areas.Identity.Data.ApplicationUser>
+
+@{
+    ViewBag.Title = "Coach Profiles";
+}
+
+<h1>All Users</h1>
+
+@if (Model.Any())
+{
+   
+
+    foreach (var user in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                User Id : @user.UserName
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@user.Fname @user.Lname</h5>
+                <h5 class="card-title">Bio: @user.Biography </h5>
+
+            </div>
+            <div class="card-footer">
+
+                @if (@ViewBag.UserId == user.Id)//this here hides the edit button for the the other users however its still secure if they try use the url to edit other peoples shit they will still be directed to their own profile :)
+                {
+                    <a href="~/Identity/Account/Manage" class="btn btn-danger">Edit</a>
+                }
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No coaches created yet
+        </div>
+       
+      
+    </div>
+}
