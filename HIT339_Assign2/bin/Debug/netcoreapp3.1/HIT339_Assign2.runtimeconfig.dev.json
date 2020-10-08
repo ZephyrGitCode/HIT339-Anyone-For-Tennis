@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\JingYeWang\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\JingYeWang\\.nuget\\packages"
+      "C:\\Users\\zephy\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\zephy\\.nuget\\packages"
     ]
   }
 }

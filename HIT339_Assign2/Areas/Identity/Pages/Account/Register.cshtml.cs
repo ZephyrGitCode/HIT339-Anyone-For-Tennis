@@ -20,7 +20,7 @@ namespace HIT339_Assign2.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<ApplicationUser>_signInManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
@@ -29,7 +29,7 @@ namespace HIT339_Assign2.Areas.Identity.Pages.Account
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser>signInManager,
+            SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
             RoleManager<IdentityRole> roleManager)
@@ -52,6 +52,25 @@ namespace HIT339_Assign2.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "First name")]
+            public string Fname { get; set; }
+
+            [Required]
+            [Display(Name = "Last Name")]
+            [DataType(DataType.Text)]
+            public string Lname { get; set; }
+
+            [Required]
+            [Display(Name = "Age")]
+            [Range(16,99)]
+            public int Age { get; set; }
+
+            [Required]
+            [Display(Name = "Gender")]
+            [DataType(DataType.Text)]
+            public string Gender { get; set; }
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -88,7 +107,15 @@ namespace HIT339_Assign2.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = Input.Email,
+                    Email = Input.Email,
+                    Fname = Input.Fname,
+                    Lname = Input.Lname,
+                    Age = Input.Age,
+                    Gender = Input.Gender
+                };
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)

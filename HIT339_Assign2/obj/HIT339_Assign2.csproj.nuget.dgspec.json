@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\工作\\存量\\管理系统\\ASP.NET\\candicemarybai\\HIT339-Anyone-For-Tennis\\HIT339_Assign2\\HIT339_Assign2.csproj": {}
+    "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assignment2_App\\HIT339_Assign2\\HIT339_Assign2.csproj": {}
   },
   "projects": {
-    "E:\\工作\\存量\\管理系统\\ASP.NET\\candicemarybai\\HIT339-Anyone-For-Tennis\\HIT339_Assign2\\HIT339_Assign2.csproj": {
+    "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assignment2_App\\HIT339_Assign2\\HIT339_Assign2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\工作\\存量\\管理系统\\ASP.NET\\candicemarybai\\HIT339-Anyone-For-Tennis\\HIT339_Assign2\\HIT339_Assign2.csproj",
+        "projectUniqueName": "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assignment2_App\\HIT339_Assign2\\HIT339_Assign2.csproj",
         "projectName": "HIT339_Assign2",
-        "projectPath": "E:\\工作\\存量\\管理系统\\ASP.NET\\candicemarybai\\HIT339-Anyone-For-Tennis\\HIT339_Assign2\\HIT339_Assign2.csproj",
-        "packagesPath": "C:\\Users\\JingYeWang\\.nuget\\packages\\",
-        "outputPath": "E:\\工作\\存量\\管理系统\\ASP.NET\\candicemarybai\\HIT339-Anyone-For-Tennis\\HIT339_Assign2\\obj\\",
+        "projectPath": "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assignment2_App\\HIT339_Assign2\\HIT339_Assign2.csproj",
+        "packagesPath": "C:\\Users\\zephy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zephy\\Documents\\SemesterTwo\\HIT339 Distributed Dev\\Assignment2\\Assignment2_App\\HIT339_Assign2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\JingYeWang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\zephy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -87,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
