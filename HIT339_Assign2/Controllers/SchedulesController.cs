@@ -51,6 +51,11 @@ namespace HIT339_Assign2.Controllers
             {
                 return NotFound();
             }
+            var tmpCoach = _context.Users.Where(c => c.Id == schedule.Coach).FirstOrDefault();
+            if (tmpCoach != null)
+            {
+                schedule.Coach = tmpCoach.UserName;
+            }
 
             return View(schedule);
         }

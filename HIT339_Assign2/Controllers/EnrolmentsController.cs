@@ -68,6 +68,12 @@ namespace HIT339_Assign2.Controllers
         {
             if (ModelState.IsValid)
             {
+                enrolment.Schedule = _context.Schedule.Where(c => c.Id == enrolment.ScheduleId).FirstOrDefault();
+                if (enrolment.Schedule == null || enrolment.Schedule.Eventdatetime <= DateTime.Now)
+                {
+                    return Content(@"<script>alert('The time has expired');window.location.href='/Enrolments/Create';</script>", "text/html");
+                }
+
                 _context.Add(enrolment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -92,8 +98,10 @@ namespace HIT339_Assign2.Controllers
             {
                 return NotFound();
             }
-            ViewData["ScheduleId"] = new SelectList(_context.Schedule, "Id", "Id", enrolment.ScheduleId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", enrolment.UserId);
+            ViewData["ScheduleId"] = new SelectList(_context.Schedule, "Id", "Id");
+            ViewData["ScheduleName"] = new SelectList(_context.Schedule, "Id", "Eventname");
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["UserName"] = new SelectList(_userManager.GetUsersInRoleAsync("Member").Result, "Id", "UserName");
             return View(enrolment);
         }
 
@@ -113,6 +121,11 @@ namespace HIT339_Assign2.Controllers
             {
                 try
                 {
+                    enrolment.Schedule = _context.Schedule.Where(c => c.Id == enrolment.ScheduleId).FirstOrDefault();
+                    if (enrolment.Schedule == null || enrolment.Schedule.Eventdatetime <= DateTime.Now)
+                    {
+                        return Content(@"<script>alert('The time has expired');window.location.href='/Enrolments/Edit/"+ enrolment.Id + "';</script>", "text/html");
+                    }
                     _context.Update(enrolment);
                     await _context.SaveChangesAsync();
                 }
