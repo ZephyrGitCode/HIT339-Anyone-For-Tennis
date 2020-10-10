@@ -6,25 +6,49 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using HIT339_Assign2.Models;
+using HIT339_Assign2.Data;
+using Microsoft.AspNetCore.Identity;
+using HIT339_Assign2.Areas.Identity.Data;
 
 namespace HIT339_Assign2.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
+            _context = context;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
+            var userId = "";
 
-        public IActionResult Privacy()
-        {
+            bool isAuthenticated = User.Identity.IsAuthenticated;
+
+            if (isAuthenticated == true)
+            {
+                userId = _userManager.GetUserId(HttpContext.User);
+                var user = _context.Users.Where(c => c.Id == userId).FirstOrDefault();
+                var role = await _userManager.GetRolesAsync(user);
+                string userrole = role[0];
+                ViewBag.Role = userrole;
+                if (userrole == "Member")
+                {
+                    return RedirectToAction("Index", "Schedules");
+                    //return Redirect();
+                }
+                if (userrole == "Coach")
+                {
+                    return RedirectToAction("Index", "Schedules");
+                    //return Redirect();
+                }
+            }
             return View();
         }
 

@@ -1,25 +1,54 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var Role = ViewBag.Role;
 }
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-   
+
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="~/images/Tennis22.svg" alt="ASP.NET" class="img-responsive" style="width: 100%; height: 100%"/>
-       
+            <img src="~/images/Tennis22.svg" alt="ASP.NET" class="img-responsive" style="" />
         </div>
-        </div>
-      
+    </div>
 </div>
 
-    <div class="test" >
-        <ul>
-            <li><a href="https://localhost:44397/Identity/Account/Register">New Members</a></li>
-            <li><a href="https://localhost:44397/Identity/Account/Login">Current Member</a></li>
-            <li><a href="https://localhost:44397/Role/ListCoach">Schedule with Coach</a></li>
-            <li><a href="https://localhost:44397/Schedules/Details/2">Special Activities</a></li>
-            
-        </ul>
+<br />
+
+@if (Role == "Member")
+{
+    <h3>Welcome Member</h3>
+    <div class="siteactions">
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Schedules" asp-action="Index"><span class="btn btn-primary">View Schedules</span></a>
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Role" asp-action="ListCoach"><span class="btn btn-primary">View Coaches</span></a>
     </div>
-   
+}
+else if (Role == "Coach")
+{
+    <h3>Welcome Coach</h3>
+    <div class="siteactions">
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Role" asp-action="ListCoach"><span class="btn btn-primary">View Coaches</span></a>
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Schedules" asp-action="Index"><span class="btn btn-primary">View Your Schedules</span></a>
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Identity" asp-action="Index"><span class="btn btn-primary">My Profile</span></a>
+    </div>
+}
+else if (Role == "Coach")
+{
+    <h3>Welcome Admin</h3>
+    <div class="siteactions">
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Role" asp-action="ListCoach"><span class="btn btn-primary">View Coaches</span></a>
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Schedules" asp-action="Index"><span class="btn btn-primary">View Your Schedules</span></a>
+        <a class="nav-link" style="text-decoration:underline;" href="~/Identity/Account/Manage"><span class="btn btn-primary">My Profile</span></a>
+    </div>
+}
+else
+{
+    <h3>Welcome New User!</h3>
+    <div class="siteactions">
+        <a class="nav-link" style="text-decoration:underline;" href="https://localhost:44397/Identity/Account/Register"><span class="btn btn-primary">New Members</span></a>
+        <a class="nav-link" style="text-decoration:underline;" href="https://localhost:44397/Identity/Account/Login"><span class="btn btn-primary">Current Member</span></a>
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Role" asp-action="ListCoach"><span class="btn btn-primary">View Coaches</span></a>
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Schedules" asp-action="Index"><span class="btn btn-primary">View Schedules</span></a>
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Home" asp-action="Contact"><span class="btn btn-primary">Site Contact</span></a>
+    </div>
+}
+

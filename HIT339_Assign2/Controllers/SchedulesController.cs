@@ -60,7 +60,6 @@ namespace HIT339_Assign2.Controllers
             return View(schedule);
         }
 
-        [Authorize(Roles = "Admin")]
         // GET: Schedules/Create
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
