@@ -801,7 +801,6 @@ C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignme
 C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Role\Create.cshtml.g.cs
 C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Role\Index.cshtml.g.cs
 C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
