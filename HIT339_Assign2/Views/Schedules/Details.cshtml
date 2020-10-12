@@ -16,11 +16,18 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.SingleSchedule.Eventname)
         </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SingleSchedule.Duration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SingleSchedule.Duration)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.SingleSchedule.Coach)
         </dt>
         <dd class="col-sm-10">
-           Myself
+            Myself
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.SingleSchedule.Location)
@@ -48,10 +55,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            @foreach (var user in Model.Members)
-            {
-                foreach (var enrol in Model.Enrolments)
+        @foreach (var user in Model.Members)
+        {
+            <tr>
+                @foreach (var enrol in Model.Enrolments)
                 {
                     if (enrol.ScheduleId == Model.SingleSchedule.Id)
                     {
@@ -62,7 +69,7 @@
                         }
                     }
                 }
-            }
-        </tr>
+            </tr>
+        }
     </tbody>
 </table>

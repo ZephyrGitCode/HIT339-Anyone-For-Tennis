@@ -16,14 +16,14 @@ namespace HIT339_Assign2.Data
         [StringLength(50), PersonalData]
         public string Eventname { get; set; }
 
-        [PersonalData]
         public string Coach { get; set; }
 
-        [PersonalData]
         public string Location { get; set; }
 
         public virtual ICollection<Enrolment> Enrolments { get; set; }
 
         public DateTime Eventdatetime { get; set; }
+
+        public string Duration { get; set; }
     }
 }
