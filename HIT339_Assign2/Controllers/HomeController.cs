@@ -9,6 +9,7 @@ using HIT339_Assign2.Models;
 using HIT339_Assign2.Data;
 using Microsoft.AspNetCore.Identity;
 using HIT339_Assign2.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HIT339_Assign2.Controllers
 {

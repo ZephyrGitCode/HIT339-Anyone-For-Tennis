@@ -109,7 +109,7 @@ namespace HIT339_Assign2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Eventname,Coach,Location,Eventdatetime")] Schedule schedule)
+        public async Task<IActionResult> Create([Bind("Id,Eventname,Coach,Location,Eventdatetime,Duration")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
@@ -145,7 +145,7 @@ namespace HIT339_Assign2.Controllers
         [Authorize(Roles = "Admin,Coach")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Eventname,Coach,Location,Eventdatetime")] Schedule schedule)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Eventname,Coach,Location,Eventdatetime,Duration")] Schedule schedule)
         {
             if (id != schedule.Id)
             {
@@ -261,6 +261,39 @@ namespace HIT339_Assign2.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+
+        // GET: Enrolments/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var schedule = await _context.Enrolment
+                .Include(e => e.Schedule)
+                .Include(e => e.User)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (schedule == null)
+            {
+                return NotFound();
+            }
+
+            return View(schedule);
+        }
+
+        // POST: Enrolments/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var schedule = await _context.Schedule.FindAsync(id);
+            _context.Schedule.Remove(schedule);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
 
         private bool ScheduleExists(int id)
         {
