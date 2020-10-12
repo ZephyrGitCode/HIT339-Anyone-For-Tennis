@@ -1325,7 +1325,6 @@ C:\Users\zephy\Downloads\HIT339-Anyone-For-Tennis-master\HIT339_Assign2\obj\Debu
 C:\Users\zephy\Downloads\HIT339-Anyone-For-Tennis-master\HIT339_Assign2\obj\Debug\netcoreapp3.1\HIT339_Assign2.genruntimeconfig.cache
 C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Role\ListUsers.cshtml.g.cs
 C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Schedules\Create.cshtml.g.cs
-C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Schedules\Delete.cshtml.g.cs
 C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Schedules\Details.cshtml.g.cs
 C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Schedules\Edit.cshtml.g.cs
 C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Schedules\Index.cshtml.g.cs
@@ -3000,3 +2999,5 @@ C:\Users\zephy\Downloads\Friday Test\Thursday Test\HIT339_Assign2\obj\Debug\netc
 C:\Users\zephy\Downloads\Friday Test\Thursday Test\HIT339_Assign2\obj\Debug\netcoreapp3.1\HIT339_Assign2.dll
 C:\Users\zephy\Downloads\Friday Test\Thursday Test\HIT339_Assign2\obj\Debug\netcoreapp3.1\HIT339_Assign2.pdb
 C:\Users\zephy\Downloads\Friday Test\Thursday Test\HIT339_Assign2\obj\Debug\netcoreapp3.1\HIT339_Assign2.genruntimeconfig.cache
+C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Schedules\Enrol.cshtml.g.cs
+C:\Users\zephy\Documents\SemesterTwo\HIT339 Distributed Dev\Assignment2\Assignment2_App\HIT339_Assign2\obj\Debug\netcoreapp3.1\Razor\Views\Schedules\UnEnrol.cshtml.g.cs

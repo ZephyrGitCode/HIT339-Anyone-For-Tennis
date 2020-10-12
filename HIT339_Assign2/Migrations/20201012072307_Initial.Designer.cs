@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HIT339_Assign2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200928101536_Inital")]
-    partial class Inital
+    [Migration("20201012072307_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -80,9 +80,6 @@ namespace HIT339_Assign2.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ScheduleId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -103,9 +100,29 @@ namespace HIT339_Assign2.Migrations
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+                    b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("HIT339_Assign2.Data.Enrolment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ScheduleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
                     b.HasIndex("ScheduleId");
 
-                    b.ToTable("AspNetUsers");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Enrolment");
                 });
 
             modelBuilder.Entity("HIT339_Assign2.Data.Schedule", b =>
@@ -119,9 +136,7 @@ namespace HIT339_Assign2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Eventdatetime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Eventname")
                         .HasColumnType("nvarchar(50)")
@@ -270,11 +285,17 @@ namespace HIT339_Assign2.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("HIT339_Assign2.Areas.Identity.Data.ApplicationUser", b =>
+            modelBuilder.Entity("HIT339_Assign2.Data.Enrolment", b =>
                 {
-                    b.HasOne("HIT339_Assign2.Data.Schedule", null)
-                        .WithMany("Enrolled")
-                        .HasForeignKey("ScheduleId");
+                    b.HasOne("HIT339_Assign2.Data.Schedule", "Schedule")
+                        .WithMany("Enrolments")
+                        .HasForeignKey("ScheduleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HIT339_Assign2.Areas.Identity.Data.ApplicationUser", "User")
+                        .WithMany("Enrolments")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

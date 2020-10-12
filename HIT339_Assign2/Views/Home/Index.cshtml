@@ -31,12 +31,15 @@ else if (Role == "Coach")
         <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Identity" asp-action="Index"><span class="btn btn-primary">My Profile</span></a>
     </div>
 }
-else if (Role == "Coach")
+else if (Role == "Admin")
 {
     <h3>Welcome Admin</h3>
     <div class="siteactions">
         <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Role" asp-action="ListCoach"><span class="btn btn-primary">View Coaches</span></a>
-        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Schedules" asp-action="Index"><span class="btn btn-primary">View Your Schedules</span></a>
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Schedules" asp-action="Index"><span class="btn btn-primary">View Schedules</span></a>
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Role" asp-action="ListUsers"><span class="btn btn-primary">View All Users</span></a>
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Enrolments" asp-action="Index"><span class="btn btn-primary">View All Enrolments</span></a>
+        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Role" asp-action="Index"><span class="btn btn-primary">View All Roles</span></a>
         <a class="nav-link" style="text-decoration:underline;" href="~/Identity/Account/Manage"><span class="btn btn-primary">My Profile</span></a>
     </div>
 }
@@ -48,7 +51,6 @@ else
         <a class="nav-link" style="text-decoration:underline;" href="https://localhost:44397/Identity/Account/Login"><span class="btn btn-primary">Current Member</span></a>
         <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Role" asp-action="ListCoach"><span class="btn btn-primary">View Coaches</span></a>
         <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Schedules" asp-action="Index"><span class="btn btn-primary">View Schedules</span></a>
-        <a class="nav-link" style="text-decoration:underline;" asp-area="" asp-controller="Home" asp-action="Contact"><span class="btn btn-primary">Site Contact</span></a>
     </div>
 }
 

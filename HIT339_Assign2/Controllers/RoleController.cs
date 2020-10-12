@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HIT339_Assign2.Areas.Identity.Data;
 using HIT339_Assign2.Data;
+using HIT339_Assign2.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,17 +29,20 @@ namespace HIT339_Assign2.Controllers
             this.userManager = userManager;
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var roles = roleManager.Roles.ToList();
             return View(roles);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View(new IdentityRole());
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(IdentityRole role)
         {
@@ -54,54 +58,20 @@ namespace HIT339_Assign2.Controllers
             return View(users);
         }
         [HttpGet]
-        [Authorize(Roles = "Admin,Coach")]
+        [Authorize(Roles = "Admin")]
         public IActionResult ListUsers()
         {
-            var userId = userManager.GetUserId(HttpContext.User);
-            ViewBag.UserId = userId;
-            var users = new List<ApplicationUser>();
-            var UserRoleInfo = _context.UserRoles.Where(c => c.UserId == userId).FirstOrDefault();
-            if (UserRoleInfo != null)
+            var members = userManager.GetUsersInRoleAsync("Member").Result;
+            var coaches = userManager.GetUsersInRoleAsync("Coach").Result;
+            var admins = userManager.GetUsersInRoleAsync("Admin").Result;
+
+            var users = new UserViewModel
             {
-                var RoleInfo = _context.Roles.Where(c => c.Id == UserRoleInfo.RoleId).FirstOrDefault();
-                if (RoleInfo != null )
-                {
-                    if (RoleInfo.Name == "Coach")
-                    {
-                        var schList = _context.Schedule.Where(c => c.Coach == userId).ToList();
-                        if (schList != null)
-                        {
-                            foreach (var item in schList)
-                            {
-                                var enrList = _context.Enrolment.Where(c => c.ScheduleId == item.Id).ToList();
-                                if (enrList != null)
-                                {
-                                    var tmpUsers = userManager.GetUsersInRoleAsync("Member").Result;
-                                    if (tmpUsers != null)
-                                    {
-                                        foreach (var eItem in enrList)
-                                        {
-                                            var tmp = tmpUsers.Where(c => c.Id == eItem.UserId).FirstOrDefault();
-                                            if (tmp != null)
-                                            {
-                                                users.Add(tmp);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            if (users != null)
-                            {
-                                users = users.Distinct().ToList();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        users = userManager.GetUsersInRoleAsync("Member").Result.ToList();
-                    }
-                }
-            }
+                Members = members.ToList(),
+                coaches = coaches.ToList(),
+                Admins = admins.ToList()
+            };
+
             return View(users);
         }
     }
