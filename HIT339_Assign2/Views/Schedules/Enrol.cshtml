@@ -1,0 +1,46 @@
+﻿@model HIT339_Assign2.Models.EnrolViewModel
+
+
+@{
+    ViewData["Title"] = "Enrol";
+}
+
+<h1>Enrol</h1>
+
+<div>
+    <h4>Schedule</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedules.Eventname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Schedules.Eventname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedules.Coach)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Schedules.Coach)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedules.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Schedules.Location)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedules.Eventdatetime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Schedules.Eventdatetime)
+        </dd>
+    </dl>
+
+    <form asp-action="Enrol">
+        <input type="hidden" asp-for="Schedules.Id" />
+        <input type="hidden" asp-for="Enrolments.UserId" value="@ViewBag.userId" />
+        <input type="submit" value="Enrol" class="btn-lg btn-primary" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

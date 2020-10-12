@@ -10,6 +10,13 @@ namespace HIT339_Assign2.Models
     public class ScheduleViewModel
     {
         public List<Schedule> Schedules { get; set; }
-        public List<ApplicationUser> Coachs { get; set; }
+
+        public Schedule SingleSchedule { get; set; }
+
+        public List<ApplicationUser> coaches { get; set; }
+
+        public List<ApplicationUser> Members { get; set; }
+
+        public List<Enrolment> Enrolments { get; set; }
     }
 }

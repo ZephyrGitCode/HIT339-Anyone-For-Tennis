@@ -1,66 +1,111 @@
 ﻿@model HIT339_Assign2.Models.ScheduleViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Schedule";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (ViewBag.Role == "Coach")
+{
+    <h1>My Schedules</h1>
+}
+else
+{
+    <h1>All Schedules</h1>
+}
 
+@if (ViewBag.Role == "Admin")
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
 
-    <table class="table">
-        <thead>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Event
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedules[0].Coach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedules[0].Location)
+            </th>
+            <th>
+                Date and Time of event
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Schedules)
+        {
+
             <tr>
-                <th>
-                    Event
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Schedules[0].Coach)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Schedules[0].Location)
-                </th>
-                <th>
-                    Date and Time of event
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Schedules)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Eventname)
-                    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Eventname)
+                </td>
 
-                    @foreach (var coach in Model.Coachs)
+                @foreach (var coach in Model.coaches)
+                {
+                    @if (coach.Id == item.Coach)
                     {
-                        @if (coach.Id == item.Coach)
+                        <td>
+                            <a href="~/Role/ListCoach">@Html.DisplayFor(modelItem => coach.Fname) @Html.DisplayFor(modelItem => coach.Lname)</a>
+                            &nbsp;
+                        </td>
+                    }
+                }
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Eventdatetime)
+                </td>
+                <td>
+                    @if (item.Eventdatetime > DateTime.Now)
+                    {
+                        @if (ViewBag.Role != "Coach" && ViewBag.Role != "Admin")
                         {
-                            <td>
-                                @Html.DisplayFor(modelItem => coach.Fname) @Html.DisplayFor(modelItem => coach.Lname)
-                                &nbsp;
-                            </td>
+
+                            if (Model.Enrolments.Any())
+                            {
+                                if (ViewBag.Enroled.Contains(item.Id))
+                                {
+                                    <button class="btn btn-danger"><a style="text-decoration:none;color:white;" asp-action="UnEnrol" asp-route-id="@item.Id">UnEnrol</a></button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-primary"><a style="text-decoration:none;color:white;" asp-action="Enrol" asp-route-id="@item.Id">Enrol</a></button>
+                                }
+                            }
+                            else
+                            {
+                                <button class="btn btn-primary"><a style="text-decoration:none;color:white;" asp-action="Enrol" asp-route-id="@item.Id">Enrol</a></button>
+                            }
+
+                        }
+                        else if (ViewBag.Role == "Admin")
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit |</a>
+                            <a asp-action="Details" asp-route-id="@item.Id">Details |</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary"><a style="text-decoration:none;color:white;" asp-action="Details" asp-route-id="@item.Id">Schedule Details</a></button>
                         }
                     }
-                    
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Location)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Eventdatetime)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                    else
+                    {
+                        <p><span class="btn-outline-danger">Event has passed</span></p>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

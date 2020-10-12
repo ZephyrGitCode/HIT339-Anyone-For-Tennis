@@ -1,0 +1,46 @@
+﻿@model HIT339_Assign2.Models.EnrolViewModel
+
+
+@{
+    ViewData["Title"] = "UnEnrol";
+}
+
+<h1>UnEnrol</h1>
+
+<h3>Are you sure you want to unenrol?</h3>
+<div>
+    <h4>Schedule</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedules.Eventname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Schedules.Eventname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedules.Coach)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Schedules.Coach)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedules.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Schedules.Location)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedules.Eventdatetime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Schedules.Eventdatetime)
+        </dd>
+    </dl>
+
+    <form asp-action="UnEnrol">
+        <input type="hidden" asp-for="Schedules.Id" />
+        <input type="submit" value="UnEnrol" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

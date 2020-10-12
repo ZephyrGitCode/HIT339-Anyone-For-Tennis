@@ -1,16 +1,17 @@
-﻿@model IEnumerable<HIT339_Assign2.Areas.Identity.Data.ApplicationUser>
+﻿@model HIT339_Assign2.Models.UserViewModel
+
 
 @{
-    ViewBag.Title = "Coach Profiles";
+    ViewBag.Title = "All Users";
 }
 
 <h1>All Users</h1>
 
-@if (Model.Any())
+@if (Model.Members.Any())
 {
-   
 
-    foreach (var user in Model)
+    <h3>Members</h3>
+    foreach (var user in Model.Members)
     {
         <div class="card mb-3">
             <div class="card-header">
@@ -24,7 +25,6 @@
 
             </div>
             <div class="card-footer">
-
                 @if (@ViewBag.UserId == user.Id)//this here hides the edit button for the the other users however its still secure if they try use the url to edit other peoples shit they will still be directed to their own profile :)
                 {
                     <a href="~/Identity/Account/Manage" class="btn btn-danger">Edit</a>
@@ -37,9 +37,77 @@ else
 {
     <div class="card">
         <div class="card-header">
-            No coaches created yet
+            No Members Yet
         </div>
-       
-      
+    </div>
+}
+
+@if (Model.coaches.Any())
+{
+
+    <h3>Coaches</h3>
+    foreach (var user in Model.coaches)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                User Id : @user.Id
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Member: @user.UserName</h5>
+                <h5 class="card-title">Bio: @user.Biography </h5>
+                <h5 class="card-title">Email: @user.Email </h5>
+                <h5 class="card-title">Phone: @user.PhoneNumber </h5>
+
+            </div>
+            <div class="card-footer">
+                @if (@ViewBag.UserId == user.Id)//this here hides the edit button for the the other users however its still secure if they try use the url to edit other peoples shit they will still be directed to their own profile :)
+                {
+                    <a href="~/Identity/Account/Manage" class="btn btn-danger">Edit</a>
+                }
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No Coaches Yet
+        </div>
+    </div>
+}
+
+@if (Model.Admins.Any())
+{
+
+    <h3>Admins</h3>
+    foreach (var user in Model.Admins)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                User Id : @user.Id
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Member: @user.UserName</h5>
+                <h5 class="card-title">Bio: @user.Biography </h5>
+                <h5 class="card-title">Email: @user.Email </h5>
+                <h5 class="card-title">Phone: @user.PhoneNumber </h5>
+
+            </div>
+            <div class="card-footer">
+                @if (@ViewBag.UserId == user.Id)//this here hides the edit button for the the other users however its still secure if they try use the url to edit other peoples shit they will still be directed to their own profile :)
+                {
+                    <a href="~/Identity/Account/Manage" class="btn btn-danger">Edit</a>
+                }
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No Coaches Yet
+        </div>
     </div>
 }
